@@ -1,20 +1,19 @@
 'use client'
 
+import { useFormStatus } from "react-dom";
 import toast from "react-hot-toast";
 
 const Button = () => {
-  const clickHandler = () => {
-    toast.success('Hoi hoi')
-  }
+  const {pending, action} = useFormStatus()
 
   return (
     <button
-      onClick={() => clickHandler()}
-      className="
+      disabled={pending}
+      className={`
+        ${pending ? 'bg-red-400' : 'bg-white'}
         rounded
-        bg-white
-        hover:bg-gray-300
-        active:bg-gray-600
+        ${pending ? '' : 'hover:bg-gray-300'}
+        ${pending ? '' : 'active:bg-gray-600'}
         text-sm
         font-semibold
         py-2
@@ -22,7 +21,7 @@ const Button = () => {
         shadow-small-button
         flex
         items-center
-      "
+      `}
     >
       <div className="flex-1 px-3">Click</div>
     </button>
