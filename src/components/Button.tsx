@@ -9,6 +9,7 @@ const Button = () => {
   return (
     <button
       disabled={pending}
+      type="submit"
       className={`
         ${pending ? 'bg-red-400' : 'bg-white'}
         rounded
